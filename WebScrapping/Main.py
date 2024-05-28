@@ -86,11 +86,11 @@ def check_price():
 
     # showing the html from the amazon page
     soup1 = BeautifulSoup(page.content, "html.parser")
-    print(soup1)
+    # print(soup1)
 
     # making the html more comprehensible
     soup2 = BeautifulSoup(soup1.prettify(), "html.parser")
-    print(soup2)
+    # print(soup2)
 
     # collecting the name and price of the product
     title = soup2.find(id='productTitle').get_text()
@@ -123,7 +123,8 @@ def check_price():
 # looping for a better price over a set period of time(in seconds)
 print("The loop will refresh every 2 hours to add a new entry to the dataset.\n")
 
-while (True):
+while True:
     check_price()
     time.sleep(7200)
-
+    if keyboard.is_pressed('s'):
+        break
